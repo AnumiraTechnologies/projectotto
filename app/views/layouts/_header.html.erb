@@ -1,0 +1,16 @@
+<% if employer_signed_in? %>
+  <p>Welcome <%= current_employer.email %></p>
+  <%= link_to 'Logged In [click to logout]', destroy_employer_session_path, :method => :delete %>
+<% else %>
+  <p>You are not signed in.</p>
+  <%= link_to 'Login', new_employer_session_path %>
+<% end %>
+
+<% if jobseeker_signed_in? %>
+  <p>Welcome <%= current_jobseeker.email %></p>
+  <%= link_to 'Logged In [click to logout]', destroy_jobseeker_session_path, :method => :delete %>
+<% else %>
+  <p>You are not signed in.</p>
+  <%= link_to 'Login to jobseeker', new_jobseeker_session_path %>
+  <%= link_to "Sign in with Linkedin",jobseeker_omniauth_authorize_path(:linkedin) %>
+<% end %>
